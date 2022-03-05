@@ -25,7 +25,7 @@ const Hero = ({ imageSrc }) => {
   return (
     <Container>
       <Image src={imageSrc} />
-      <Title>Travel made simple.</Title>
+      <Title>Voyage en Guadeloupe.</Title>
     </Container>
   )
 }

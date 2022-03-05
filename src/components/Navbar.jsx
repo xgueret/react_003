@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { links } from '../data'
+import { FiMenu, FiX } from 'react-icons/fi'
 
 const Container = styled.nav`
   position: sticky;
@@ -39,11 +39,29 @@ const MenuItemLink = styled.a`
   border-color: transparent;
   transition: 250ms;
 `
+const IconContainer = styled.span`
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  display: none;
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
+`
 
-const Navbar = () => {
+const Navbar = ({ links }) => {
+  const [menuClicked, setMenuClicked] = useState(false)
+
+  const toggleMenuClick = () => {
+    setMenuClicked(!menuClicked)
+  }
+
   return (
     <Container>
-      <Logo />
+      <Logo>l'île aux belles eaux</Logo>
+      <IconContainer onClick={toggleMenuClick}>
+        {menuClicked ? <FiX /> : <FiMenu />}
+      </IconContainer>
       <Menu>
         {links.map((link) => {
           return (

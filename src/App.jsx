@@ -1,19 +1,32 @@
 import styledComponents from 'styled-components'
-import travel_01 from './asset/travel1.jpg'
-//import travel_02 from './assets/travel-02.jpg'
-//import travel_03 from './assets/travel-03.jpg'
+import travel_01 from './assets/hero.jpg'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
-/*import Slider from './components/Slider'*/
+import Slider from './components/Slider'
+
+import { links, sliders } from './data'
 
 const Container = styledComponents.div``
+const SliderContainer = styledComponents.div``
 
 const App = () => {
   return (
     <Container>
-      <Navbar />
+      <Navbar links={links} />
       <Hero imageSrc={travel_01} />
-      {/*<Slider />*/}
+      <SliderContainer>
+        {sliders.map((itemslider) => {
+          return (
+            <Slider
+              key={itemslider.id}
+              imageSrc={itemslider.url}
+              title={itemslider.title}
+              subtitle={itemslider.subtitle}
+              flipped={itemslider.flipped}
+            />
+          )
+        })}
+      </SliderContainer>
     </Container>
   )
 }
